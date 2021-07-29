@@ -1,0 +1,337 @@
+.txwhite{
+  color: white;
+}
+
+.space{
+  margin: 60px 0 0px 0;
+}
+
+
+
+
+/* header */ 
+
+.top{
+  background: url(images/mainbg.jpg);
+  background-size: cover;
+}
+
+.maintitle{
+  font-size: 6em;
+  color: #f5f7fa;
+  text-shadow:2px 2px 30px rgb(128 128 128 / 65%)
+}
+
+.boxcover{
+  position: relative;
+  height: 1000px;
+}
+
+.whitebox{
+  height: 880px;
+  width: 230px;
+  background-color: rgba(255, 255, 255, 0.51);
+  position: absolute;
+  left: calc(50% - 115px);
+  top: 0%;
+}
+
+.name{
+  height: 313px;
+  width: 337px;
+  background-color: rgba(255, 255, 255, 0.7);
+  position: absolute;
+  left: calc(50% - 300px);
+  top: 150px;
+  z-index: 99;
+  font: 500;
+  font-size: 4rem;
+  border-radius: 27px;
+  box-shadow: 5px 5px 20px 0 rgb(0 0 0 / 20%);
+}
+
+.name>img{
+  width: 200px;
+  transform: translateY(-100px) rotate(-20deg);
+}
+
+.name>p{
+  transform: translateY(-90px);
+}
+
+.intro{
+  width: 40vw;
+  position: absolute;
+  left: calc(50% + 10px);
+  top: 400px;
+  z-index: 40;
+  padding: 20px;
+  background-color: rgba(184,198,214,0.42);
+  box-shadow: 5px 5px 20px 0 rgb(0 0 0 / 40%);
+  border-radius: 10px;
+  text-shadow:2px 2px 8px rgb(0 0 0 / 40%);
+
+}
+
+
+ /* my skills */
+.svg{
+  background-color: #d9d9d9;
+  padding: 20px;
+  width: 90px;
+  border-radius: 45px;
+}
+.skills{
+  background-image: linear-gradient(
+    0deg, rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url(images/menubg.jpg);
+  background-size: cover;
+}
+
+.skilltitle{
+  color: #ffffffee;
+  text-shadow: 2px 2px 20px rgb(0 0 0 / 30%);
+}
+
+.skillcard{
+  min-height: 300px;
+  background-color: rgba(255, 255, 255, 0.544);
+  padding: 5px 30px 80px 30px !important;
+  box-shadow: 5px 5px 0px 0 rgb(0 0 0 / 20%);
+  border-radius: 10px;
+}
+
+.skillcard2{
+  transform:translateY(70px);
+}
+
+.inspace{
+  margin-top: 120px;
+}
+
+
+/* SKILLS 共同 */
+.contentS{
+  position: absolute;
+  top: 4rem;
+}
+
+.contentS>h1{
+  font-size: 150px;
+  color: white;
+  text-shadow: 2px 2px 20px rgb(0 0 0 / 10%);
+  margin-bottom: 50px;
+}
+
+.paraS{
+  width: 70%;
+  height: 400px;
+  background-color:rgba(255, 255, 255, 0.626) ;
+}
+
+
+
+/* web */
+.web{
+  background-color: #f5f7fa;
+}
+
+/* design */
+#dportfolio{
+  background-color: #e5e5e5;
+  
+}
+
+/* english */
+.english{
+  background-color: #f5f7fa;
+  position: relative;
+  height: 800px;
+  overflow: hidden;
+}
+
+.inkE{
+  position: absolute;
+  left: calc(20%);
+  top: 20px;
+}
+.ink>img{
+  width: 50vw;
+}
+
+
+
+#design{
+  background-color: #e5e5e5;
+  position: relative;
+  height: 800px;
+  overflow: hidden;
+}
+
+/* time */
+.time{
+  background: url(images/timebg.jpg);
+  background-size: cover;
+  overflow: hidden;
+}
+
+.m{
+  font-size: 10vw;
+  animation: marquee 20s infinite linear;
+  white-space:nowrap;
+  color: #d9d9d997;
+}
+  
+@keyframes marquee {
+  0% {
+    transform: translateX(0)
+  }
+  100% {
+    transform: translateX(-100%)
+  }
+}
+
+
+.whitebox2{
+  background-color: #ffffff84;
+}
+
+
+
+
+/* contact */
+.contactbox{
+  position: relative;
+}
+
+.contactimg{
+  position: absolute;
+  left: calc(50% - 474px/2);
+  padding-top: 80px;
+}
+
+
+.contact{
+  background-color:#f5f7fa ;
+  height: 650px;
+}
+
+.contactimg>img{
+  animation: rotate-center 15s linear infinite both;
+}
+
+@keyframes rotate-center {
+  0% {
+            transform: rotate(0);
+            opacity: 1;
+  }
+  10%,50%,90%{
+            opacity: 0.2;
+  }
+  20%,40%,60%,80%{
+    opacity: 1;
+  }
+  30%,70%{
+    opacity: 0.4;
+  }
+  100% {
+            transform: rotate(360deg);
+            opacity: 0.9;
+  }
+}
+
+.contact{
+  overflow: hidden;
+}
+
+
+.contactpara{
+  position: relative;
+  top: 20%;
+  left: 0;
+}
+
+
+.contactbox2{
+  background: url(images/contact.jpg);
+  text-shadow: 2px 2px 8px rgb(0 0 0 / 25%);
+  font-size: 4rem;
+  color: #fff;
+  background-size: 100%;
+}
+
+.contactbox2:hover{
+  animation: size 0.2s linear 1 both;
+  
+}
+
+@keyframes size {
+  0% {
+    background-size: 100%;
+    background-position: center;
+  }
+  100% {
+    background-size: 110%;
+    background-position: center;
+
+  }
+
+}
+
+
+@media (max-width: 768px) {
+  .maintitle{
+    font-size: 12vw;
+  }
+
+  .name{
+    height: 313px;
+    width: 337px;
+    position: absolute;
+    left: calc(50% - 150px);
+    top: 50px;
+    z-index: 99;
+  }
+
+  .intro{
+    width: 80vw;
+    position: absolute;
+    left: calc(50% - 40vw);
+    top: 350px;
+    z-index: 40;
+  }
+
+
+  /* skills */
+  .skillcard {
+    transform:none;
+    margin-top: 20px;
+  }
+
+}
+
+
+@media (max-width: 992px) {
+  .skillcard2 {
+    transform:none;
+    margin-top: 20px;
+  }
+
+  .ink>img{
+    width: 80vw;
+  }
+
+  .contentS>h1{
+    font-size: 15vw;
+    color: hotpink;
+  }
+
+  .paraS{
+    width: 100%;
+    height: auto;
+  }
+
+  .contactme{
+    font-size: 4vw !important;
+  }
+
+}
