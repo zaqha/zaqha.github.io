@@ -8,9 +8,13 @@
 
 
 /* header */ 
+#Nav{
+  margin-right: 10px;
+}
 .navbar{
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.4) 85%, rgba(255, 255, 255, 0) 100%);
 }
+
 
 .top{
   background: url(images/mainbg.jpg);
