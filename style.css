@@ -1,0 +1,41 @@
+.bg{
+ background: #e8e9ee;
+}
+
+.panelbg1{
+  background: linear-gradient(to bottom, #eef1f8, #fcfcfc);
+  height:85vh;
+}
+
+.panelbg2{
+  background: #fcfcfc;
+  height:85vh;
+}
+
+.buttons{
+  margin: auto;
+}
+
+.section::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(180deg, #a736d0 0%, #708AD4 99%);
+  box-shadow: inset 2px 2px 5px 0 rgba(#fff, 0.5);
+  border-radius: 100px;
+}
+
+.section{
+  overflow-y:scroll;
+  height:85vh;
+}
+
+
+.section::-webkit-scrollbar {
+  width: 5px;
+}
+
+.nav >*{
+font-size:17px; 
+text-decoration:none;
+color: #898989;
+font-weight: bolder;
+margin-bottom: 7px;
+}
