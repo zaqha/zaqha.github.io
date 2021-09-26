@@ -161,5 +161,14 @@ class DB{
     $Work=new DB('work');
     $Front=new DB('front');
     $Back=new DB('back');
+    $Img=new DB('img');
+
+
+    // titlestream
+    $ts=[
+        "work"=>"工作經歷",
+        "contact"=>"聯絡資訊",
+        "front"=>"前端作品",
+    ]; 
 
 ?>

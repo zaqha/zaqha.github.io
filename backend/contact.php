@@ -1,5 +1,9 @@
 <div class="pb-5">
-	<h4 class="fw-bolder pb-2">編輯聯絡資訊</h4>
+	<h4 class="fw-bolder pb-2">編輯聯絡資訊
+	<button type="button" class="btn btn-primary me-4 ms-4" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+								新增聯絡資訊
+		</button>
+	</h4>
 	<form method="post" action="api\edit.php">
 		<table width="100%">
 			<tbody>
@@ -30,8 +34,8 @@
 		</table>
 	
 		<div class="d-flex justify-content-center mt-3">						
-			<input class="btn btn-primary me-4" type="button" onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;modal/<?= $do; ?>.php&#39;)" value="新增聯絡資訊">
-			<input class="btn btn-secondary mx-1" type="button" value="修改確定">
+
+			<input class="btn btn-secondary mx-1" type="submit" value="修改確定">
 			<input class="btn btn-secondary mx-1" type="reset" value="重置">
 			<input type="hidden" name="table" value="<?= $do; ?>">
 		</div>

@@ -29,7 +29,6 @@
 		<div class="d-flex justify-content-center mt-3">						
 			<input class="btn btn-primary me-4" type="button" onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;modal/<?= $do; ?>.php&#39;)" value="新增帳號">
 			<input class="btn btn-secondary mx-1" type="button" value="修改確定">
-			<input class="btn btn-secondary mx-1" type="reset" value="重置">
 			<input type="hidden" name="table" value="<?= $do; ?>">
 		</div>
 	</form>

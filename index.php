@@ -11,16 +11,16 @@
   <!-- AOS -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <title>resume</title>
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<link rel="stylesheet" href="slick-theme.css">
 </head>
 <body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="0" class="scrollspy-example" tabindex="0">
   <!-- header -->
   <header class="top">
-<img src="images/LOGO.png" alt="" width="5px">
+<img src="img/LOGO.png" alt="" width="5px">
     <!-- 導覽列 -->
 <nav id="navbar" class="navbar navbar-expand-md navbar-light fixed-top fw-bolder">
-<!-- slick slider -->
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-<link rel="stylesheet" href="slick-theme.css">
+
 
 
 
@@ -54,6 +54,7 @@
 
          <!-- Button trigger modal -->
  <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">Login</button>
+ <!-- <button onclick="window.location.href='backend/login.php'">LOGIN</button> -->
 
 
 
@@ -61,6 +62,7 @@
 </nav>
 
  <!-- Modal -->
+<form action="?" method="post" id="form">
  <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -71,21 +73,28 @@
       <div class="modal-body">
         
         <div class="form-floating mb-3">
-          <input type="email" class="form-control" id="floatingInput" placeholder="Account">
-          <label for="floatingInput">Account</label>
+          <!-- <input type="text" class="form-control" id="floatingInput" placeholder="Account"> -->
+          <!-- <label  for="floatingInput">Account</label> -->
+          <input onfocus="this.value=''" type="text" name="acc" id="acc" onclick="hide()">
+          <div id="error1"></div>
         </div>
         <div class="form-floating">
-          <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-          <label for="floatingPassword">Password</label>
+          <!-- <input type="password" class="form-control" id="floatingPassword" placeholder="Password"> -->
+          <!-- <label for="floatingPassword">Password</label> -->
+          <input type="password" name="pw" id="pw" onclick="hide()">
+          <div id="error2"></div>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Login</button>
+        <!-- <button id="close" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+        <button id="close" type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="reset()">Close</button>
+        <!-- <input type="submit" class="btn btn-primary" value="Login"></button> -->
+        <input type="button" onclick="login()" value="登入">
       </div>
     </div>
   </div>
 </div>
+</form>
 
     <!-- maintitle -->
     <div class="container">
@@ -98,7 +107,7 @@
       <div class="boxcover" id="about">
         <div class="whitebox"></div>
         <div class="name">
-          <img src="images/ginger.png" alt="">
+          <img src="img/ginger.png" alt="">
           <p class="text-center" style="margin-bottom: -15px;">JENWEN</p>
           <p class="text-center fs-4">WEB DEVELOPER</p>
         </div>
@@ -120,7 +129,7 @@
     <div class="container">
       <div class="text-center pt-5" data-aos="fade-down"
       data-aos-easing="linear"
-      data-aos-duration="1500"><img src="images/drip.png" height="120px"></div>
+      data-aos-duration="1500"><img src="img/drip.png" height="120px"></div>
       <h1 class="text-center skilltitle mt-3 mb-5">MY SKILLS</h1>
       
       <!-- 卡片 -->
@@ -128,7 +137,7 @@
           <!-- WEB DEV. -->
           <div class= " text-center col-lg-3 col-md-6 col-sm-12 px-3">
             <div class="card-body skillcard">    
-                <img src="images/global.svg" class="svg my-5" alt="" >
+                <img src="img/global.svg" class="svg my-5" alt="" >
   
               <h5 class="card-title">WEB DEVELOPE</h5>
               <p class="card-text fst-italic text-muted mb-5">With supporting text below as a natural lead-in to additional content.</p>
@@ -140,7 +149,7 @@
           <div class= " text-center col-lg-3 col-md-6 col-sm-12 px-3">
             <div class="card-body skillcard skillcard2">
           
-                <img src="images/loud-speaker.svg" class="svg my-5" alt="" >
+                <img src="img/loud-speaker.svg" class="svg my-5" alt="" >
   
               <h5 class="card-title">ENGLISH</h5>
               <p class="card-text fst-italic text-muted mb-5">With supporting text below as a natural lead-in to additional content.</p>
@@ -151,7 +160,7 @@
           <!-- GRAPHIC DESIGN -->
           <div class= " text-center col-lg-3 col-md-6 col-sm-12 px-3">
             <div class="card-body skillcard">    
-                <img src="images/diamond.svg" class="svg my-5" alt="" >
+                <img src="img/diamond.svg" class="svg my-5" alt="" >
   
               <h5 class="card-title">GRPHIC DESIGN</h5>
               <p class="card-text fst-italic text-muted mb-5">With supporting text below as a natural lead-in to additional content.</p>
@@ -162,7 +171,7 @@
           <div class= " text-center col-lg-3 col-md-6 col-sm-12 px-3 ">
             <div class="card-body skillcard skillcard2">
           
-                <img src="images/lightbulb.svg" class="svg my-5" alt="" >
+                <img src="img/lightbulb.svg" class="svg my-5" alt="" >
   
               <h5 class="card-title">MARKETING</h5>
               <p class="card-text fst-italic text-muted mb-5">With supporting text below as a natural lead-in to additional content.</p>
@@ -183,7 +192,7 @@
   <!-- web dev -->
   <div class="english" id="web" style="margin-top: -20px;">
     <section class="container">
-      <div class="inkE ink2"><img  data-aos="zoom-in" data-aos-delay="500" data-aos-duration="2000" src="images/ink-1.png"></div>
+      <div class="inkE ink2"><img  data-aos="zoom-in" data-aos-delay="500" data-aos-duration="2000" src="img/ink-1.png"></div>
       <div class="contentS">
         <h1 class="col-lg-6 col-12">WEB DEVELOPE</h1>
         <div class="row justify-content-center">
@@ -341,7 +350,7 @@
   <!-- graphic design -->
   <div id="design">
     <section class="container">
-      <div class="inkE ink" ><img data-aos="zoom-in" data-aos-delay="1000" data-aos-duration="2000" src="images/ink-2.png" alt=""></div>
+      <div class="inkE ink" ><img data-aos="zoom-in" data-aos-delay="1000" data-aos-duration="2000" src="img/ink-2.png" alt=""></div>
       <div class="contentS">
         <h1>GRAPHIC<br>DESIGN</h1>
         <div class="row justify-content-center">
@@ -372,7 +381,7 @@
   <!-- english -->
   <div class="english" style="margin-top: -20px;">
     <section class="container">
-      <div class="inkE ink"><img  data-aos="zoom-in" data-aos-delay="1000" data-aos-duration="2000" src="images/ink-4.png" alt=""></div>
+      <div class="inkE ink"><img  data-aos="zoom-in" data-aos-delay="1000" data-aos-duration="2000" src="img/ink-4.png" alt=""></div>
       <div class="contentS">
         <h1 class="col-lg-6 col-12">ENGLISH</h1>
         <div class="row justify-content-center">
@@ -391,7 +400,7 @@
   <!-- marketing -->
   <div class="english" style="margin-top: -20px; background-color: #fffcfa;">
     <section class="container">
-      <div class="inkE ink"><img  data-aos="zoom-in" data-aos-delay="1200" data-aos-duration="2000" src="images/ink-3.png" alt=""></div>
+      <div class="inkE ink"><img  data-aos="zoom-in" data-aos-delay="1200" data-aos-duration="2000" src="img/ink-3.png" alt=""></div>
       <div class="contentS">
         <h1 class="col-lg-6 col-12">MARKETING</h1>
         <div class="row justify-content-center">
@@ -410,7 +419,7 @@
   <!-- timeline -->
   <section class=" parallax" style="overflow: hidden;">
 
-    <img class="  parallaxLayer"   style="position:absolute; z-index: -999; width: 100%; height: 800px;"  data-depth="0.7"  src="images/timebg.jpg" alt="">
+    <img class="  parallaxLayer"   style="position:absolute; z-index: -999; width: 100%; height: 800px;"  data-depth="0.7"  src="img/timebg.jpg" alt="">
 
   <div  class="time" id="time">
     <div class="m row"> TIMELINE TIMELINE TIMELINE TIMELINE TIMELINE TIMELINE TIMELINE TIMELINE TIMELINE TIMELINE TIMELINE TIMELINE</div>
@@ -444,7 +453,7 @@
   <!-- contact -->
   <div class="contact" id="contact">
     <div class="contactimg" style="overflow: hidden;">
-      <img src="images\contact1.png" alt="">
+      <img src="img\contact1.png" alt="">
     </div>
     <div class="contactpara row justify-content-center mt-3" >
       <div class=" p-5 col-md-4 col-10  order-md-2 contactbox2 "  style="box-shadow: 5px 5px 20px 0 rgb(0 0 0 / 40%);">
@@ -506,6 +515,45 @@
     }
   ]
 });
+
+
+// 登入
+function login(){
+  let acc=$("#acc").val();
+  let pw=$("#pw").val();
+  $.get("api/chk_acc.php",{acc},(res)=>{
+    if(res!=1){
+      console.log(res);
+            $('#error1').html('<p style="color:red;font-weight:bolder">&nbsp*帳號錯誤</p>');
+        }else{
+            $.get('api/chk_pw.php',{acc,pw},(chk)=>{
+                if(chk!=1){
+                    // alert('密碼錯誤')
+                    $('#error2').html('<p style="color:red;font-weight:bolder">&nbsp*密碼錯誤</p>');
+                }else{
+
+                    if(acc=='admin'){
+                        location.href="backend.php";
+                    }else{
+                        location.href="index.php";
+                    }
+                }
+            })
+        }
+    })
+}
+
+function hide(){
+  $('#error1').html('')
+  $('#error2').html('')
+}
+
+function reset(){
+  $('#form').reset()
+}
+
+
   </script>
+
 </body>
 </html>

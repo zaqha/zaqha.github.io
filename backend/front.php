@@ -1,46 +1,96 @@
+
 <div class="pb-5">
-	<h4 class="fw-bolder">編輯前端作品集</h4>
+	<h4 class="fw-bolder">編輯前端作品集
+	<button type="button" class="btn btn-primary me-4 ms-4" data-bs-toggle="modal" data-bs-target="#staticBackdrop">新增前端作品</button>
+	</h4>
 	<form method="post" action="api\edit.php">
-		<table width="100%" class="cent">
-			<tbody>
-				<tr class="yel">
-					<td width="5%">截圖</td>
-					<td width="5%">標題</td>
-					<td width="5%">介紹</td>
-					<td width="5%">使用語言</td>
-					<td width="5%">連結</td>
-					<td width="5%">顯示</td>
-					<td width="5%">刪除</td>
-
-				</tr>
-
 				<?php
 				$rows = $Front->all();
 				foreach ($rows as $key => $value) {
 				?>
-					<tr>
-						<td><img src="img/<?= $value['img']; ?>" style="width: 150px;height: 100px;"></td>
-						<td><input type="text" name="title[]" value="<?= $value['title']; ?>"></td>
-						<td><input type="text" name="text[]" value="<?= $value['text']; ?>"></td>
-						<td><input type="text" name="languages[]" value="<?= $value['languages']; ?>"></td>
-						<td><input type="text" name="href[]" value="<?= $value['href']; ?>"></td>
-						<td><input type="checkbox" name="sh[]" value="<?= $value['id']; ?>" <?= ($value['sh'] == 1) ? "checked" : ""; ?>></td>
-						<td><input type="checkbox" name="del[]" value="<?= $value['id']; ?>"></td>
+					<div class="py-4 px-3 mb-4 border border-1 rounded-3">
+						<div  class="badge rounded-pill bg-secondary mb-3">no.<?=$key+1?></div>
+						<br>
 
-						<input type="hidden" name="id[]" value="<?= $value['id']; ?>">
-						<td><input type="button" value="更換動畫" onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;modal/pfront_update.php?id=<?= $value['id']; ?>&#39;)"></td>
-					</tr>
+						<section class="row">
+						<main class="col-lg-4 col-12">
+						<img class="mb-4" src="img/<?= $value['img']; ?>" style="width: 100%;height: 66.6%">
+						</main>
+
+						<main class="col-lg-8 col-12">
+						<div class="input-group mb-3">
+							<span class="input-group-text">標題</span>
+							<input type="text" class="form-control" name="title[]" value="<?= $value['title']; ?>" readonly style="background-color: white;">
+
+							<span class="input-group-text">使用語言</span>
+							<input type="text" class="form-control" name="lang[]" value="<?= $value['lang']; ?>" readonly style="background-color: white;">
+						</div>
+						<div class="input-group mb-3">
+							<span class="input-group-text">連結</span>
+							<input type="text" class="form-control" name="href[]" value="<?= $value['href']; ?>" readonly style="background-color: white;">
+						</div>
+						<div class="input-group mb-3" >
+							<span class="input-group-text" >介紹</span>
+							<textarea readonly style="background-color: white;" name="text" class="form-control" id="exampleFormControlTextarea1" rows="2" style="height: 10vh;"><?= $value['text'] ?></textarea>
+						</div>
+						<div class="d-flex justify-content-center mt-4">
+							<input class="btn btn-dark mx-1" type="button" value="更換圖片" onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;modal/front_update.php?id=<?= $value['id']; ?>&#39;)">
+							<button class="show-hide btn btn-secondary mx-1" style="background:<?=($value['sh']==1)?'#0d6efd':'black';?>" data-id="<?=$value['id'];?>"><?=($value['sh']==1)?'顯示':'隱藏';?></button>
+							<input class="btn btn-dark mx-1" type="button" value="編輯" onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;modal/front_edit.php?id=<?= $value['id']; ?>&#39;)">
+							<button class='del-btn btn btn-secondary mx-1' data-id="<?=$value['id'];?>">刪除</button>
+						</div>
+					</div>
+					
 				<?php
 				}
 				?>
 
-			</tbody>
-		</table>
-			<div class="d-flex justify-content-center mt-3">						
-			<input class="btn btn-primary me-4" type="button" onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;modal/<?= $do; ?>.php&#39;)" value="新增聯絡資訊">
-			<input class="btn btn-secondary mx-1" type="button" value="修改確定">
-			<input class="btn btn-secondary mx-1" type="reset" value="重置">
+			<div class="d-flex justify-content-start mt-3">						
+
 			<input type="hidden" name="table" value="<?= $do; ?>">
 		</div>
 	</form>
 </div>
+
+<script>
+$(".show-hide").on('click',function(){
+    let id=$(this).data('id')
+    switch($(this).text()){
+        case "顯示":
+            $(this).text("隱藏")
+						$(this).css("background-color","black")
+        break;
+        case "隱藏":
+            $(this).text("顯示"),
+						$(this).css("background-color","green")
+        break;
+    }
+$.post("api/show.php",{id},()=>{
+})
+})
+
+// 刪除
+$(".del-btn").on("click",function(){
+    let id=$(this).data('id')
+		if(confirm("是否確定刪除?")){
+			$.post("api/del.php",{'table':'front',id},()=>{
+        location.reload();
+    })
+		}
+else{	}
+})
+
+// 修改
+$(".edit-btn").on("click",function(){
+    let id=$(this).data('id')
+		if(confirm("是否確定修改?")){
+			$.post("api/edit_front.php",{'table':'front',id,text,title,lang,href},()=>{
+        // location.reload();
+    })
+		}
+else{	}
+})
+
+
+
+</script>
