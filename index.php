@@ -1,29 +1,32 @@
+<?php include_once "base.php";?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css.css">
+  <!-- css -->
+  <link rel="stylesheet" href="css/css.css">
+  <!-- js -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <!-- boostrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
   <!-- AOS -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <!-- slick -->
+  <link rel="stylesheet" href="css/slick.css">
+  <link rel="stylesheet" href="css/slick-theme.css">
   <title>resume</title>
-  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-<link rel="stylesheet" href="slick-theme.css">
 </head>
+
+
+
 <body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="0" class="scrollspy-example" tabindex="0">
   <!-- header -->
   <header class="top">
-<img src="img/LOGO.png" alt="" width="5px">
+    <img src="img/LOGO.png" alt="" width="5px">
     <!-- 導覽列 -->
-<nav id="navbar" class="navbar navbar-expand-md navbar-light fixed-top fw-bolder">
-
-
-
-
+    <nav id="navbar" class="navbar navbar-expand-md navbar-light fixed-top fw-bolder">
 
   <div class="container">
 
@@ -52,44 +55,38 @@
       </ul>
     </div>
 
-         <!-- Button trigger modal -->
- <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">Login</button>
- <!-- <button onclick="window.location.href='backend/login.php'">LOGIN</button> -->
+  <!-- Button trigger modal -->
+    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">Login</button>
 
 
 
   </div>
 </nav>
 
- <!-- Modal -->
+<!-- Modal -->
 <form action="?" method="post" id="form">
- <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">WELCOME</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"  onclick="reset()"></button>
       </div>
       <div class="modal-body">
         
         <div class="form-floating mb-3">
-          <!-- <input type="text" class="form-control" id="floatingInput" placeholder="Account"> -->
-          <!-- <label  for="floatingInput">Account</label> -->
-          <input onfocus="this.value=''" type="text" name="acc" id="acc" onclick="hide()">
+          <input type="text" class="acc form-control" placeholder="Account" name="acc" id="acc" onclick="hide()">
+          <label  for="floatingInput">Account</label>
           <div id="error1"></div>
-        </div>
+        </div>   
         <div class="form-floating">
-          <!-- <input type="password" class="form-control" id="floatingPassword" placeholder="Password"> -->
-          <!-- <label for="floatingPassword">Password</label> -->
-          <input type="password" name="pw" id="pw" onclick="hide()">
+          <input type="password" class="pw form-control"  placeholder="Password"  name="pw" id="pw" onclick="hide()">
+          <label for="floatingPassword">Password</label>
           <div id="error2"></div>
         </div>
       </div>
       <div class="modal-footer">
-        <!-- <button id="close" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-        <button id="close" type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="reset()">Close</button>
-        <!-- <input type="submit" class="btn btn-primary" value="Login"></button> -->
-        <input type="button" onclick="login()" value="登入">
+        <input type="button" class="btn btn-secondary" onclick="login()" value="登入">
       </div>
     </div>
   </div>
@@ -115,7 +112,7 @@
         <div class="intro">
           <div class="card-body">
             <h5 class="card-title fw-bolder fs-2 txwhite" style="margin: 1em auto;">INTRODUCTION</h5>
-            <p class="card-text lh-lg fw-bold fs-6 mb-5 txwhite">HELLO Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+            <p class="card-text lh-lg fw-bold fs-6 mb-5 txwhite"><?=$Intro->find(1)['intro'] ?></p>
             <button type="button" class="btn btn-light mb-4 fw-bolder">CONTACT ME</button>
           </div>
         </div>
@@ -140,8 +137,12 @@
                 <img src="img/global.svg" class="svg my-5" alt="" >
   
               <h5 class="card-title">WEB DEVELOPE</h5>
-              <p class="card-text fst-italic text-muted mb-5">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="#" class="link-dark -5">MORE</a>
+              <p class="card-text text-muted mb-5">
+              <?php
+                  echo mb_substr($Skills->find(1)['text'],0,20)."...";
+                ?>
+              </p>
+              <a href="#web" class="link-dark -5">MORE</a>
             </div>
         </div>
 
@@ -152,8 +153,12 @@
                 <img src="img/loud-speaker.svg" class="svg my-5" alt="" >
   
               <h5 class="card-title">ENGLISH</h5>
-              <p class="card-text fst-italic text-muted mb-5">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="#" class="link-dark -5">MORE</a>
+              <p class="card-text text-muted mb-5">
+                <?php
+                  echo mb_substr($Skills->find(2)['text'],0,20)."...";
+                ?>
+              </p>
+              <a href="#english" class="link-dark -5">MORE</a>
             </div>
         </div>
 
@@ -163,8 +168,12 @@
                 <img src="img/diamond.svg" class="svg my-5" alt="" >
   
               <h5 class="card-title">GRPHIC DESIGN</h5>
-              <p class="card-text fst-italic text-muted mb-5">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="#" class="link-dark -5">MORE</a>
+              <p class="card-text text-muted mb-5">
+                <?php
+                  echo mb_substr($Skills->find(3)['text'],0,20)."...";
+                ?>
+              </p>
+              <a href="#design" class="link-dark -5">MORE</a>
             </div>
         </div>
           <!-- MARKETING -->
@@ -174,15 +183,19 @@
                 <img src="img/lightbulb.svg" class="svg my-5" alt="" >
   
               <h5 class="card-title">MARKETING</h5>
-              <p class="card-text fst-italic text-muted mb-5">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="#" class="link-dark -5">MORE</a>
+              <p class="card-text text-muted mb-5">
+                <?php
+                  echo mb_substr($Skills->find(4)['text'],0,20)."...";
+                ?>
+              </p>
+              <a href="#marketing" class="link-dark -5">MORE</a>
             </div>
         </div>
   
       <div class="inspace">
       <div class="row py-5 g-3">
-        <h2 class="col-lg-6 col-12 skilltitle fs-1">I advise organizations in value creation strategies</h2>
-        <p class="col-lg-6 col-12 lh-lg">Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+        <h2 class="col-lg-6 col-12 skilltitle fs-1"><?=$Intro->find(1)['title'] ?></h2>
+        <p class="col-lg-6 col-12 lh-lg"><?=$Intro->find(1)['text'] ?></p>
       </div>
       </div>
       </section>
@@ -197,18 +210,16 @@
         <h1 class="col-lg-6 col-12">WEB DEVELOPE</h1>
         <div class="row justify-content-center">
           <p class="col-lg-5 col-10 text-end mt-5 fs-2 fw-bolder">
-            PHP<br>
-            JAVASCRIPT<br>
-            MYSQL<br>
+            <?=$Skills->find(1)['skill1'] ?><br><?=$Skills->find(1)['skill2'] ?><br><?=$Skills->find(1)['skill3'] ?><br>
           </p>
           <section class="col-lg-7 col-10">
-            <p class="paraS p-5">Dignissim suspendisse in est ante in nibh mauris. Varius quam quisque id diam vel quam elementum pulvinar etiam. Nunc pulvinar sapien et ligula ullamcorper malesuada proin. Nunc mattis enim ut tellus elementum sagittis vitae et leo.</p>
+            <p class="paraS p-5"><?=$Skills->find(1)['text'] ?></p>
           </section>
         </div>
       </div>
     </section>
   </div>
-  <!-- 分頁介紹 -->
+  <!-- web作品集 -->
 <div style="background-color: #f5f7fa; margin-top: -10px;" id="portfolioWEB">
 <section  class="container py-5" >
   <header  class="text-center" >
@@ -275,7 +286,6 @@
                     </div>
                   </div>
                 </a>
-
               </div>
     </div>
 
@@ -355,27 +365,25 @@
         <h1>GRAPHIC<br>DESIGN</h1>
         <div class="row justify-content-center">
           <p class="col-lg-5 col-10 text-end mt-5 fs-2 fw-bolder">
-            POHTOSHOP<br>
-            ILLUSTRATOR<br>
-            VIDEO EDITING<br>
+            <?=$Skills->find(2)['skill1'] ?><br><?=$Skills->find(2)['skill2'] ?><br><?=$Skills->find(2)['skill3'] ?><br>
           </p>
           <section class="col-lg-7 col-10">
-            <p class="paraS p-5">Dignissim suspendisse in est ante in nibh mauris. Varius quam quisque id diam vel quam elementum pulvinar etiam. Nunc pulvinar sapien et ligula ullamcorper malesuada proin. Nunc mattis enim ut tellus elementum sagittis vitae et leo.</p>
+            <p class="paraS p-5"><?=$Skills->find(2)['text'] ?></p>
           </section>
         </div>
       </div>
     </section>
   </div>
 <!-- design portfolio -->
-<!-- slick套件 -->
+<!-- slick輪播套件 -->
 <div id="dportfolio" style="padding: 50px 0;">
   <h1 class="text-center fw-bolder fs-2" style="color: rgb(255, 255, 255); padding-top: 70px;text-shadow: 2px 2px 4px rgb(0 0 0 / 35%);">GRAPHIC DESIGN PORTFOLIO</h1>
-  <ul class="responsive" style="width: 80vw; left: 8vw; padding:50px 0;">
-    <li><img src="portfolio/01.jpg" width="250px"></li>
-    <li><img src="portfolio/02.jpg" width="250px"></li>
-    <li><img src="portfolio/03.jpg" width="250px"></li>
-    <li><img src="portfolio/04.jpg" width="250px"></li>
-    <li><img src="portfolio/04.jpg" width="250px"></li>
+  <ul class="responsive" style="width: 80vw; margin:50px auto">
+    <li><img src="portfolio/01.jpg" width="250px" style="margin:auto"></li>
+    <li><img src="portfolio/02.jpg" width="250px" style="margin:auto"></li>
+    <li><img src="portfolio/03.jpg" width="250px" style="margin:auto"></li>
+    <li><img src="portfolio/04.jpg" width="250px" style="margin:auto"></li>
+    <li><img src="portfolio/04.jpg" width="250px" style="margin:auto"></li>
   </ul>
 </div>
   <!-- english -->
@@ -386,12 +394,10 @@
         <h1 class="col-lg-6 col-12">ENGLISH</h1>
         <div class="row justify-content-center">
           <p class="col-lg-5 col-10 text-end mt-5 fs-2 fw-bolder">
-            TOIEC 835<br>
-            INTERNATIONAL TRADE<br>
-            US CUSTOMER SERVICE<br>
+          <?=$Skills->find(3)['skill1'] ?><br><?=$Skills->find(3)['skill2'] ?><br><?=$Skills->find(3)['skill3'] ?><br>
           </p>
           <section class="col-lg-7 col-10">
-            <p class="paraS p-5">Dignissim suspendisse in est ante in nibh mauris. Varius quam quisque id diam vel quam elementum pulvinar etiam. Nunc pulvinar sapien et ligula ullamcorper malesuada proin. Nunc mattis enim ut tellus elementum sagittis vitae et leo.</p>
+            <p class="paraS  p-5"><?=$Skills->find(3)['text'] ?></p>
           </section>
         </div>
       </div>
@@ -405,12 +411,10 @@
         <h1 class="col-lg-6 col-12">MARKETING</h1>
         <div class="row justify-content-center">
           <p class="col-lg-5 col-10 text-end mt-5 fs-2 fw-bolder">
-            E-COMMERCE<br>
-            PROPOSAL<br>
-            SEO<br>
+          <?=$Skills->find(4)['skill1'] ?><br><?=$Skills->find(4)['skill2'] ?><br><?=$Skills->find(4)['skill3'] ?><br>
           </p>
           <section class="col-lg-7 col-10">
-            <p class="paraS p-5">Dignissim suspendisse in est ante in nibh mauris. Varius quam quisque id diam vel quam elementum pulvinar etiam. Nunc pulvinar sapien et ligula ullamcorper malesuada proin. Nunc mattis enim ut tellus elementum sagittis vitae et leo.</p>
+            <p class="paraS p-5"><?=$Skills->find(4)['text'] ?></p>
           </section>
         </div>
       </div>
@@ -419,33 +423,22 @@
   <!-- timeline -->
   <section class=" parallax" style="overflow: hidden;">
 
-    <img class="  parallaxLayer"   style="position:absolute; z-index: -999; width: 100%; height: 800px;"  data-depth="0.7"  src="img/timebg.jpg" alt="">
+    <img class=" parallaxLayer"   style="position:absolute; z-index: -999; width: 100%; height: 800px;"  data-depth="0.7"  src="img/timebg.jpg" alt="">
 
   <div  class="time" id="time">
     <div class="m row"> TIMELINE TIMELINE TIMELINE TIMELINE TIMELINE TIMELINE TIMELINE TIMELINE TIMELINE TIMELINE TIMELINE TIMELINE</div>
-    <div class="row justify-content-center mb-4 parallaxLayer">
-      <div class="col-md-2 col-10 align-self-center"><p class="skilltitle text-center fs-1 fw-bolder ">2021</p><p class="text-center">泰山職訓中心</p></div>
-      <article class="col-md-4 col-10 whitebox2 p-4">Recruitment Agency that strives to help businesses put together a staff of highly efficient and skilled professionals, and also serve employees by opening up new vistas of job opportunities for them.</article>
-    </div>
+    <?php
+      $rows=$Work->all();
+      foreach ($rows as $key =>$value){
+        echo "<div class='row justify-content-center mb-5  parallaxLayer'>";
+        echo "<div class='col-md-2 col-10 align-self-center'>";
+        echo"<p class='skilltitle text-center fs-1 fw-bolder'>{$value['year']}</p>";
+        echo"<p class='text-center'>{$value['company']} | {$value['field']}</p></div>";
+        echo"<article class='col-md-4 col-10 whitebox2 p-4'>{$value['text']}";
+        echo"</div>";
+      }
 
-    <div class="row justify-content-center mb-4" >
-      <div class="col-md-2 col-10 align-self-center"><p class="skilltitle text-center fs-1 fw-bolder ">2021</p><p class="text-center">泰山職訓中心</p></div>
-      <article class="col-md-4 col-10 whitebox2 p-4">Recruitment Agency that strives to help businesses put together a staff of highly efficient and skilled professionals, and also serve employees by opening up new vistas of job opportunities for them.</article>
-    </div>
-
-    <div class="row justify-content-center mb-4" >
-      <div class="col-md-2 col-10 align-self-center"><p class="skilltitle text-center fs-1 fw-bolder ">2021</p><p class="text-center">泰山職訓中心</p></div>
-      <article class="col-md-4 col-10 whitebox2 p-4">Recruitment Agency that strives to help businesses put together a staff of highly efficient and skilled professionals, and also serve employees by opening up new vistas of job opportunities for them.</article>
-    </div>
-
-    <div class="row justify-content-center mb-4" >
-      <div class="col-md-2 col-10 align-self-center"><p class="skilltitle text-center fs-1 fw-bolder ">2021</p><p class="text-center">泰山職訓中心</p></div>
-      <article class="col-md-4 col-10 whitebox2 p-4">Recruitment Agency that strives to help businesses put together a staff of highly efficient and skilled professionals, and also serve employees by opening up new vistas of job opportunities for them.</article>
-    </div>
-    <div class="row justify-content-center mb-5" >
-      <div class="col-md-2 col-10 align-self-center"><p class="skilltitle text-center fs-1 fw-bolder ">2021</p><p class="text-center">泰山職訓中心</p></div>
-      <article class="col-md-4 col-10 whitebox2 p-4">Recruitment Agency that strives to help businesses put together a staff of highly efficient and skilled professionals, and also serve employees by opening up new vistas of job opportunities for them.</article>
-    </div>
+    ?>
 
 
   </div>
@@ -506,7 +499,7 @@
       }
     },
     {
-      breakpoint: 680,
+      breakpoint: 600,
       settings: {
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -549,6 +542,8 @@ function hide(){
 }
 
 function reset(){
+  $('#error1').html('')
+  $('#error2').html('')
   $('#form').reset()
 }
 

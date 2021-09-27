@@ -1,0 +1,77 @@
+.bg{
+ background: #e8e9ee;
+}
+
+.panelbg1{
+  background: linear-gradient(to bottom, #eef1f8, #fcfcfc);
+  height:85vh;
+}
+
+.panelbg2{
+  background: #fcfcfc;
+  height:85vh;
+}
+
+.buttons{
+  margin: auto;
+}
+
+.section::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(180deg, #a736d0 0%, #708AD4 99%);
+  box-shadow: 2px 2px 5px 0 rgba(rgb(108, 108, 108), 0.5);
+  border-radius: 100px;
+}
+
+.section{
+  overflow-y:scroll;
+  height:85vh;
+}
+
+
+.section::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.nav >*{
+font-size:17px; 
+text-decoration:none;
+color: #898989;
+font-weight: bolder;
+margin-bottom: 7px;
+}
+
+
+
+
+
+
+/* modal */
+
+#cover
+{
+	width:100%;
+	height:100%;
+	position:fixed;
+	z-index:5;
+	background:rgba(51,51,51,0.4);
+	top:0px;
+	left:0px;
+	overflow:auto;
+}
+#coverr
+{
+	width:70%;
+	min-width:300px;
+	max-width:500px;
+	position:absolute;
+	z-index:5;
+	background:#ffffff;
+	top:0px;
+	left:0px;
+	right:0px;
+	bottom:0px;
+	margin:auto;
+	overflow:auto;
+	border-radius: 7px;
+}

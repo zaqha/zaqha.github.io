@@ -62,10 +62,10 @@ $(".show-hide").on('click',function(){
         break;
         case "隱藏":
             $(this).text("顯示"),
-						$(this).css("background-color","green")
+						$(this).css("background-color","#0d6efd")
         break;
     }
-$.post("api/show.php",{id},()=>{
+$.post("api/show.php",{'table':'front',id},()=>{
 })
 })
 
@@ -79,18 +79,6 @@ $(".del-btn").on("click",function(){
 		}
 else{	}
 })
-
-// 修改
-$(".edit-btn").on("click",function(){
-    let id=$(this).data('id')
-		if(confirm("是否確定修改?")){
-			$.post("api/edit_front.php",{'table':'front',id,text,title,lang,href},()=>{
-        // location.reload();
-    })
-		}
-else{	}
-})
-
 
 
 </script>

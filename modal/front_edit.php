@@ -5,7 +5,7 @@ $row=$Front->find($_GET['id']);
 <h5 class="fw-bolder" style="padding-left: 1rem; padding-top:1rem">編輯</h5>
 <hr>
 
-<form method="post" action="api\edit_front.php">
+<form method="post" action="api\edit_modal.php">
   <div class="container">
 						<div class="input-group mb-3">
 							<span class="input-group-text">標題</span>

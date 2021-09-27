@@ -30,9 +30,8 @@
 						</div>
 
 						<div class="d-flex justify-content-center">						
-									<input class="btn btn-secondary mx-1" type="button" value="顯示">
-									<input class="btn btn-secondary mx-1" type="button" value="修改確定">
-									<input class="btn btn-secondary mx-1" type="reset" value="重置">
+									<button class="show-hide btn btn-secondary mx-1" style="background:<?=($value['sh']==1)?'#0d6efd':'black';?>" data-id="<?=$value['id'];?>"><?=($value['sh']==1)?'顯示':'隱藏';?></button>
+									<input class="btn btn-dark mx-1" type="button" value="編輯" onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;modal/work_edit.php?id=<?= $value['id']; ?>&#39;)">
 									<input class="btn btn-secondary mx-1" type="button" value="刪除">
 								</div>
 					</div>
@@ -43,3 +42,34 @@
 						<input type="hidden" name="table" value="<?= $do; ?>">
 	</form>
 </div>
+
+<script>
+$(".show-hide").on('click',function(){
+    let id=$(this).data('id')
+    switch($(this).text()){
+        case "顯示":
+            $(this).text("隱藏")
+						$(this).css("background-color","black")
+        break;
+        case "隱藏":
+            $(this).text("顯示"),
+						$(this).css("background-color","#0d6efd")
+        break;
+    }
+$.post("api/show.php",{'table':'work',id},()=>{
+})
+})
+
+// 刪除
+$(".del-btn").on("click",function(){
+    let id=$(this).data('id')
+		if(confirm("是否確定刪除?")){
+			$.post("api/del.php",{'table':'work',id},()=>{
+        location.reload();
+    })
+		}
+else{	}
+})
+
+
+</script>
